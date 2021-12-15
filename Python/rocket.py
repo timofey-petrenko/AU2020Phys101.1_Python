@@ -151,11 +151,10 @@ for t in np.arange(0, 2, MODEL_DT): # для всех временных отр�
         
 
 
-
-get_ipython().run_line_magic('matplotlib', 'inline')
 from matplotlib import pyplot as pp
 
 for b in bodies: # для всех тел
     pp.plot(b.trajectory_x, b.trajectory_y) # нарисуем их траектории
 
+pp.show()
 
