@@ -2,12 +2,11 @@
 # coding: utf-8
 
 import math
-
+from random import randint
 
 def is_prime(num):
     """Говорит, верно ли, что число простое"""
     try:
-        num = int(num)
         if num <= 1:
             return False
         if num == 2 or num == 3:
@@ -16,7 +15,7 @@ def is_prime(num):
             return False
         i = 5
         k = 2
-        while i < math.ceil(num ** 0.5):
+        while i <= math.ceil(num ** 0.5):
             if num % i == 0:
                 return False
             i += k
@@ -25,5 +24,10 @@ def is_prime(num):
     except ValueError:
         print('Просили ли же: ЦЕЛОЕ ЧИСЛО!')
 
-number = input('Введите целое число')
-print(is_prime(number))
+numbers = []
+for _ in range(100):
+    value = randint(-100_000, 100_000)
+    numbers.append(value)
+
+for number in numbers:    
+    print(number, ':', is_prime(number))
