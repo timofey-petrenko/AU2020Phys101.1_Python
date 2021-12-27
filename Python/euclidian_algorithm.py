@@ -9,7 +9,7 @@ def gcd(a, b):
     if b == 0 and a != 0:
         return abs(a)
     if a == 0 and b == 0:
-        print('Хотя бы одно из чисел должно быть ненулевым!!!')
+        raise ValueError('Хотя бы одно из чисел должно быть ненулевым!!!')
     else:
         return abs(gcd(b, a % b))
 
