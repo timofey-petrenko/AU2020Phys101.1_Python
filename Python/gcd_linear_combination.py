@@ -13,7 +13,7 @@ def egcd(num1, num2):
         y = 0
         return x, y, num1
     if num1 == 0 and num2 == 0:
-        print('Хотя бы одно из чисел должно быть ненулевым!!!')
+        raise ValueError('Хотя бы одно из чисел должно быть ненулевым!!!')
     else:
         d = egcd(num2 % num1, num1)
         gcd = d[2]
