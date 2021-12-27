@@ -32,7 +32,6 @@ def rabin_karp(text, pattern):
                     break
             if flag:
                 result.append(i)
-        return result
     elif m == 0:
         if n == 0:
             result = []
