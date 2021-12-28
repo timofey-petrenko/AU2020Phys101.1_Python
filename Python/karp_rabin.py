@@ -20,24 +20,17 @@ def rabin_karp(text, pattern):
     ---------------------
         список позиций в тексте, с которых начинаются вхождения образца
     """
-    result = []
     n = len(text)
     m = len(pattern)
-    if m != 0:
-        for i in range(0, n - m + 1):
-            flag = True
-            for j in range(0, m):
-                if text[i+j] != pattern[j]:
-                    flag = False
-                    break
-            if flag:
-                result.append(i)
-    elif m == 0:
-        if n == 0:
-            result = []
-        elif n != 0:
-            result = [x for x in range(0, n)]
+    result = []
+    hash_pattern = hash(pattern)
+    for i in range(0, n - m):
+        hash_text = hash(text[i:i + m])
+        if hash_text == hash_pattern:
+            if text[i:i + m] == pattern[0:m]:
+                 result.append(i)
     return result
+
 
 
 class RabinKarpTest(unittest.TestCase):
