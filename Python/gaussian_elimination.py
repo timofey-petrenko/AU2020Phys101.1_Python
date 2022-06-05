@@ -31,7 +31,6 @@ def gauss(A, b):
                     A_b[i - 1, A_b_length] -= A_b[j, A_b_length] * A_b[i - 1, j] #подставляем
         return A_b[:, -1]            
     forward()
-    backward()
     x = backward() #возвращаем крайний справа столбец, получившийся после элементарных преобразований - наш ответ.
     return x
 
