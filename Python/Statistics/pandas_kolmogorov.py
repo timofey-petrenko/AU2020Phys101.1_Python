@@ -47,9 +47,5 @@ plt.xlabel('Номер опыта')
 
 print(df2.describe())
 
-my_data = pandas.DataFrame(data={
-    "value": df2
-})
-
-print(stats.kstest(my_data["value"], "norm", (my_data["value"].mean(), my_data["value"].std()), 
-          N=len(my_data["value"])))
+print(stats.kstest(df2, "norm", (df2.mean(), df2.std()), 
+          N=len(df2)))
