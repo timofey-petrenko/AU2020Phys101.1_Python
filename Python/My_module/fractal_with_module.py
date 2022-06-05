@@ -1,5 +1,5 @@
 import turtle
-import sierpinski
+import sierpinski_function
 
 size = 800
 min_L = 10
