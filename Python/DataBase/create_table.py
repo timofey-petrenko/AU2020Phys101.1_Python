@@ -1,7 +1,7 @@
 import cs50
 from cs50 import SQL
 
-open('list_of_classees.db', 'w').close()
+open('list_of_classes.db', 'w').close()
 db = SQL('sqlite:///exams.db')
 
 db.execute('CREATE TABLE students (id INTEGER, student TEXT, PRIMARY KEY(id))')
