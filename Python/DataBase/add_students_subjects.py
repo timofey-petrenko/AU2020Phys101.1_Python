@@ -2,7 +2,7 @@ import cs50
 from cs50 import SQL
 
 
-open('list_of_classes.db', 'w') #открываем файл
+open('list_of_classes.db', 'a') #открываем файл
 db = SQL('sqlite:///list_of_classes.db') #работаем с SQLite через Python
 
 
