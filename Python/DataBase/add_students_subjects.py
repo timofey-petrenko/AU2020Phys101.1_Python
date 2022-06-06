@@ -2,7 +2,6 @@ import cs50
 from cs50 import SQL
 
 
-open('list_of_classes.db', 'a') #открываем файл
 db = SQL('sqlite:///list_of_classes.db') #работаем с SQLite через Python
 
 
@@ -15,5 +14,3 @@ id = db.execute('INSERT INTO students (student) VALUES(?)', student_name) #до�
 for subject in list_of_subjects: #добавляем предметы в таблицу предметов, соотносяя со студентом
     id_class = db.execute('INSERT INTO classes (class) VALUES(?,?)', id, subject)
 print('New data added successfully.')
-
-close('list_of_classes.db') #не забываем закрыть файл!
