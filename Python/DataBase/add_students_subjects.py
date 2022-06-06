@@ -1,3 +1,7 @@
+import cs50
+from cs50 import SQL
+
+
 db = SQL('sqlite:///list_of_classes.db') #работаем с SQLite через Python
 
 
