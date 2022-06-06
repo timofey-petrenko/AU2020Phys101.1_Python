@@ -16,3 +16,7 @@ id = db.execute('INSERT INTO students (student) VALUES(?)', student_name) #до�
 for subject in list_of_subjects: #добавляем предметы в таблицу предметов, соотносяя со студентом
     id_class = db.execute('INSERT INTO classes (class_id, class) VALUES(?,?)', id, subject)
 print('New data added successfully.')
+print('Currently we have registered the following students:')
+dict_stud = db.execute('SELECT student FROM students;')
+for el in dict_stud:
+    print(el['student'])
