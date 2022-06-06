@@ -14,3 +14,5 @@ list_of_subjects = input('Type in all the subjects this students has participate
 id = db.execute('INSERT INTO students (student) VALUES(?)', student_name)
 for subject in list_of_subjects:
     id_class = db.execute('INSERT INTO classes (class) VALUES(?)', subject)
+
+close('list_of_classes.db', 'w')
