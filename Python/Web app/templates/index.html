@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+{% extends 'layout.html' %}
+
+{% block title %}
+index
+{% endblock %}
+{% block body %} 
+<h1>Choose the language you desire to learn and register for a class.</h1>
+    <form action='/' method='post'>
+        <input autocomplete='off' name='name' placeholder='Student name' type='text'>
+        <select name='language'>
+            <option disabled selected  value=''>Choose language</option>
+            {% for language in languages %}
+                <option value='{{ language }}'>{{ language }}</option>
+            {% endfor %}
+        <input type='submit' value='Register'>
+    </form>
+    <ul>
+        <p> Read about the languages we teach: </p>
+        <li><a href='Spanish.html'>Spanish</a></li>
+        <li><a href='German.html'>German</a></li>
+        <li><a href='French.html'>French</a></li>
+        <li><a href='Russian.html'>Russian</a></li>
+        <li><a href='Arabic.html'>Arabic</a></li>
+        <li><a href='Mandarin.html'>Mandarin</a></li>
+        <li><a href='Japanese.html'>Japanese</a></li>
+    </ul>
+{% endblock %}
