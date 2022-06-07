@@ -12,10 +12,12 @@ Y = list(Y)
 if len(X) != len(Y):
     X = X[:min(len(X), len(Y))]
     Y = Y[:min(len(X), len(Y))]
-X = np.array(X)
+X = np.array(X) #получили 'экспериментельные' точки
 Y = np.array(Y)
 
 def generate_population(size, k_boundaries, b_boundaries):
+    """Создает первичную популяцию нужного размера в нужных границах 
+    (в нашем случае, популяции коэффициентов многочлена первой степени)"""
     lower_k_boundary, upper_k_boundary = k_boundaries
     lower_b_boundary, upper_b_boundary = b_boundaries
 
@@ -31,11 +33,14 @@ def generate_population(size, k_boundaries, b_boundaries):
     
 
 def apply_function(individual):
+    """Функция, определяющая, насколько хороший индивид 
+    в эволюционном плане (насколько точно полином приближает точки)"""
     k = individual["k"]
     b = individual["b"]
     return - (np.sum((Y - k * X - b)**2))
     
 def choice_by_roulette(sorted_population, fitness_sum):
+    """Вытаскиваем индивидов с учетом хорошести"""
     offset = 0
     normalized_fitness_sum = fitness_sum
 
@@ -54,11 +59,15 @@ def choice_by_roulette(sorted_population, fitness_sum):
 
         if draw <= accumulated:
             return individual
+        
+        
 def sort_population_by_fitness(population):
+    """Сортируем популяцию по хорошести"""
     return sorted(population, key=apply_function)
 
 
 def crossover(individual_a, individual_b):
+    """Осуществляем кроссовер"""
     ka = individual_a["k"]
     ba = individual_a["b"]
 
@@ -69,6 +78,7 @@ def crossover(individual_a, individual_b):
 
 
 def mutate(individual):
+    """Мутируем, не выходя за грани"""
     next_k = individual["k"] + random.uniform(-1, 1)
     next_b = individual["b"] + random.uniform(-1, 1)
 
@@ -82,6 +92,7 @@ def mutate(individual):
 
 
 def make_next_generation(previous_population):
+    """Получаем из старого поколения новое"""
     next_generation = []
     sorted_by_fitness_population = sort_population_by_fitness(previous_population)
     population_size = len(previous_population)
@@ -100,18 +111,19 @@ def make_next_generation(previous_population):
 generations = 2500
 
 population = generate_population(size=100, k_boundaries=(-100, 100), b_boundaries=(-100, 100))
-
+#плодим первичную популяцию
 i = 1
 while True:
 
     if i == generations:
-        break
+        break #при прошествии необходимого количества поколений завершаем симуляцию
 
     i += 1
 
-    population = make_next_generation(population)
+    population = make_next_generation(population)#делаем новую популяцию
 
-best_individual = sort_population_by_fitness(population)[-1]
+best_individual = sort_population_by_fitness(population)[-1]#выбираем лучшего индивида
+                                                       #(наиболее точную аппроксимацию)
 print("\n🔬 FINAL RESULT")
 print("X=", X, " Y=", Y)
 print(best_individual, apply_function(best_individual))
