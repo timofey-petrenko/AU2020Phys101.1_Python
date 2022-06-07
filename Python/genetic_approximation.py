@@ -97,7 +97,7 @@ def make_next_generation(previous_population):
 
     return next_generation
     
-generations = 500
+generations = 2500
 
 population = generate_population(size=100, k_boundaries=(-100, 100), b_boundaries=(-100, 100))
 
