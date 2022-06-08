@@ -1,6 +1,8 @@
 import math
 import random
 import numpy as np
+from matplotlib import pyplot as plt
+
 
 X = set()
 Y = set()
@@ -128,3 +130,10 @@ print("\n🔬 FINAL RESULT")
 print("X=", X, " Y=", Y)
 print(best_individual, apply_function(best_individual))
 print(np.polyfit(X, Y, deg=1))
+
+plt.scatter(X, Y, color='black')
+L = np.linspace(-50, 50, 10000)
+plt.plot(L, res[0] * L + res[1], color='blue', label='np.polyfit(x,y,deg=1)')
+plt.plot(L, best_individual['k'] * L + best_individual['b'], color='red', label='genetic algorithm')
+plt.legend()
+plt.show()
