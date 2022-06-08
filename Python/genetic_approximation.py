@@ -12,7 +12,7 @@ Y = list(Y)
 if len(X) != len(Y):
     X = X[:min(len(X), len(Y))]
     Y = Y[:min(len(X), len(Y))]
-X = np.array(X) #получили 'экспериментельные' точки
+X = np.array(X) #получили 'экспериментальные' точки
 Y = np.array(Y)
 
 def generate_population(size, k_boundaries, b_boundaries):
