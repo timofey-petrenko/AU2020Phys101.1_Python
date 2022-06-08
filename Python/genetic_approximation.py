@@ -129,7 +129,8 @@ best_individual = sort_population_by_fitness(population)[-1]#выбираем л
 print("\n🔬 FINAL RESULT")
 print("X=", X, " Y=", Y)
 print(best_individual, apply_function(best_individual))
-print(np.polyfit(X, Y, deg=1))
+res = np.polyfit(X, Y, deg=1)
+print(res)
 
 plt.scatter(X, Y, color='black')
 L = np.linspace(-50, 50, 10000)
